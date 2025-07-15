@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --black-primary: #0e0e0e;
+    --black-secondary: #1a1a1a;
+    --white-text: #f9f9f9;
+
+    --blue: #3b82f6;
+    --purple: #9333ea;
+    --red: #ef4444;
+
+    --gradient-main: linear-gradient(135deg, var(--blue), var(--purple), var(--red));
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+}
+
