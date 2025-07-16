@@ -53,6 +53,19 @@ span.gradient {
   -webkit-text-fill-color: transparent;
 }
 
+a.gradient-button {
+  background: var(--gradient-main);
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: initial;
+  color: var(--white-text);
+  padding: var(--margin-small) var(--margin-medium);
+  border-radius: var(--margin-small);
+  display: block;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
 /* Texts styles */
 
 p.description {
@@ -350,38 +363,82 @@ section {
   }
 }
 
-#whyus{
+#whyus {
   background-color: var(--black-secondary);
   margin: 0;
   padding: var(--section-padding) var(--margin-large);
 
-  .content-box{
-    h3.section-title{
+  .content-box {
+    h3.section-title {
       font-size: 2.8rem;
       line-height: 120%;
       font-weight: 400;
     }
   }
 
-  .whyus-boxes{
+  .whyus-boxes {
     margin-top: var(--margin-large);
     display: flex;
     flex-direction: column;
     gap: var(--margin-medium);
 
-    .whyus-box{
+    .whyus-box {
       background-color: var(--black-primary);
       padding: var(--section-padding);
       border-radius: var(--margin-small);
 
-      i{
+      i {
         font-size: 2rem;
       }
 
-      h4.box-title{
+      h4.box-title {
         font-size: 1.8rem;
         margin: var(--margin-medium) 0;
         font-weight: 400;
+      }
+    }
+  }
+}
+
+#courses {
+  .container {
+    .content-box {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+
+      h3.section-title {
+        font-size: 2.8rem;
+        line-height: 120%;
+        font-weight: 400;
+        width: 60%;
+      }
+    }
+
+    .courses-box{
+      margin-top: var(--margin-large);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+
+      .course{
+        padding: var(--margin-medium);
+        background-color: var(--black-secondary);
+        border-radius: var(--margin-small);
+
+        i{
+          font-size: 2.5rem;
+        }
+
+        h4.box-title{
+          font-size: 1.8rem;
+          margin-top: var(--margin-medium);
+          font-weight: 400;
+        }
+
+        .gradient-button{
+          margin-top: var(--margin-medium);
+        }
       }
     }
   }
@@ -458,55 +515,98 @@ section {
           width: calc(25% - (var(--margin-medium)));
           padding: var(--section-padding-desktop);
 
-          i{
+          i {
             font-size: 2.5rem;
             transition: 0.5s;
           }
         }
 
-        .logo-box:hover i{
+        .logo-box:hover i {
           transform: scale(1.2);
         }
       }
     }
   }
 
-  #whyus{
-  
-  
-  padding: var(--section-padding-desktop) var(--margin-large);
+  #whyus {
+    padding: var(--section-padding-desktop) var(--margin-large);
 
-  .content-box{
-    display: flex;
-    justify-content: center;
-    
-    h3.section-title{
-      font-size: 2.8rem;
-      line-height: 120%;
-      font-weight: 400;
-      width: 60%;
-      text-align: center;
+    .content-box {
+      display: flex;
+      justify-content: center;
+
+      h3.section-title {
+        font-size: 2.8rem;
+        line-height: 120%;
+        font-weight: 400;
+        width: 60%;
+        text-align: center;
+      }
+    }
+
+    .whyus-boxes {
+      margin-top: var(--margin-large-desktop);
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--gap);
+      justify-content: space-between;
+
+      .whyus-box {
+        width: calc(33% - (var(--gap) / 1.8));
+
+        i {
+          font-size: 2rem;
+        }
+
+        h4.box-title {
+          font-size: 1.8rem;
+          margin: var(--margin-medium) 0;
+          font-weight: 400;
+        }
+      }
     }
   }
 
-  .whyus-boxes{
-    margin-top: var(--margin-large-desktop);
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--gap);
-    justify-content: space-between;
-
-    .whyus-box{
-      width: calc(33% - (var(--gap)/1.8));
-
-      i{
-        font-size: 2rem;
+  #courses {
+  .container {
+    .content-box {
+      align-items: center;
+      
+      h3.section-title {
+        font-size: 3.2rem;
+        line-height: 120%;
+        text-align: center;
       }
+      p.description{
+        width: 80%;
+        text-align: center;
+      }
+    }
 
-      h4.box-title{
-        font-size: 1.8rem;
-        margin: var(--margin-medium) 0;
-        font-weight: 400;
+    .courses-box{
+      margin-top: var(--margin-large-desktop);
+      flex-direction: row;
+
+      .course{
+        padding: var(--section-padding);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        i{
+          font-size: 3.5rem;
+        }
+
+        h4.box-title{
+          font-size: 1.8rem;
+          margin-top: var(--margin-medium);
+          font-weight: 400;
+        }
+
+        .gradient-button{
+          margin-top: var(--margin-medium);
+        }
       }
     }
   }
