@@ -687,12 +687,30 @@ footer {
 
       .menu-element {
         .menu-link {
-          font-size: 1rem;
+          font-size: 1.1rem;
           background: none;
           background-clip: border-box;
           -webkit-background-clip: border-box;
           -webkit-text-fill-color: initial;
           color: var(--white-text);
+          transition: 0.3s;
+          position: relative;
+        }
+
+        .menu-link::after {
+          content: "";
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: var(--gradient-main);
+          border-radius: 50%;
+          transition: 0.5s;
+        }
+
+        .menu-link:hover::after {
+          width: 100%;
         }
 
         .last {
@@ -840,6 +858,23 @@ footer {
               text-transform: capitalize;
               text-decoration: none;
               color: var(--white-text);
+              position: relative;
+            }
+
+            .menu-link::after {
+              content: "";
+              position: absolute;
+              bottom: -5px;
+              left: 0;
+              width: 0;
+              height: 2px;
+              background: var(--gradient-main);
+              border-radius: 50%;
+              transition: 0.5s;
+            }
+
+            .menu-link:hover::after {
+              width: 100%;
             }
           }
         }
@@ -849,9 +884,25 @@ footer {
         flex-direction: row;
         justify-content: space-between;
         .links {
-          .footer-link {
-            text-decoration: none;
-            color: var(--white-text);
+          
+          .footer-link{
+            position: relative;
+          }
+
+          .footer-link::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            border-radius: 50%;
+            transition: 0.5s;
+          }
+
+          .footer-link:hover::after {
+            width: 100%;
           }
         }
       }
