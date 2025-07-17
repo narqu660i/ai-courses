@@ -35,3 +35,32 @@ document.querySelector(".button-left").addEventListener("click", function () {
     container.scrollTo({ left: 0, behavior: "smooth" });
   }
 });
+
+// === FAQ ===
+
+document.addEventListener("DOMContentLoaded", () => {
+  const faqButtons = document.querySelectorAll(".faq-btn");
+
+  faqButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector(".faq-icon");
+
+      document.querySelectorAll(".faq-content").forEach((el) => {
+        if (el !== content) {
+          el.style.maxHeight = null;
+          el.previousElementSibling.querySelector(".faq-icon").style.transform =
+            "rotate(0deg)";
+        }
+      });
+
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        icon.style.transform = "rotate(0deg)";
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.style.transform = "rotate(45deg)";
+      }
+    });
+  });
+});
