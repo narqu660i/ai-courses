@@ -1012,7 +1012,7 @@ footer {
       justify-content: space-between;
 
       .whyus-box {
-        width: calc(33% - (var(--gap) / 1.8));
+        width: calc((100%/3) - (var(--gap)/1.5));
 
         i {
           font-size: 2rem;
