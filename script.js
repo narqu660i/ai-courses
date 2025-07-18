@@ -76,7 +76,7 @@ window.emailjs = emailjs;
 function openPopup(product) {
   selectedProduct = product;
   document.getElementById("course-name").value = product;
-  document.getElementById("overlay").style.display = "flex";
+  document.getElementById("overlay").style.display = "block";
   document.getElementById("popup").style.display = "flex";
 }
 
@@ -109,6 +109,7 @@ function sendOrder(event) {
         "thanksMessage"
       ).innerText = `Zamówiłeś kurs: ${selectedProduct}`;
       document.getElementById("thanks").style.display = "flex";
+      document.getElementById("overlay").style.display = "block";
     },
     function (error) {
       alert("Błąd podczas wysyłania wiadomości: " + error.text);
