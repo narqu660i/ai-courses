@@ -1,3 +1,6 @@
+
+let selectedProduct = "";
+
 // === HAMBURGER MENU ===
 
 const menuBtn = document.querySelector(".menu-btn");
@@ -64,3 +67,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// Popup z zamówieniem
+
+emailjs.init('EfDzvrswdcrdEvUsj');
+window.emailjs = emailjs;
+
+function openPopup(product) {
+  selectedProduct = product;
+  document.getElementById("course-name").value = product;
+  document.getElementById("overlay").style.display = "flex";
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("thanks").style.display = "none";
+
+  document.getElementById("user_name").value = "";
+  document.getElementById("user_email").value = "";
+  document.getElementById("product_name").value = "";
+
+  document.getElementById("thanksMessage").innerText = "";
+}
+
+function sendOrder(event) {
+  event.preventDefault();
+
+  const templateParams = {
+    user_name: document.getElementById("user_name").value,
+    user_email: document.getElementById("user_email").value,
+    product_name: selectedProduct,
+  };
+
+  emailjs.send("service_kphgpge", "template_owr63xb", templateParams).then(
+    function (response) {
+      console.log("Sukces!", response.status, response.text);
+      closePopup();
+      document.getElementById(
+        "thanksMessage"
+      ).innerText = `Zamówiłeś kurs: ${selectedProduct}`;
+      document.getElementById("thanks").style.display = "flex";
+    },
+    function (error) {
+      alert("Błąd podczas wysyłania wiadomości: " + error.text);
+    }
+  );
+}

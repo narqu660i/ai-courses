@@ -43,6 +43,7 @@ body {
   background-color: var(--black-primary);
   color: var(--white-text);
   overflow-x: hidden;
+  display: block;
 }
 
 .container {
@@ -57,6 +58,7 @@ span.gradient {
   -webkit-text-fill-color: transparent;
 }
 
+button.gradient-button,
 a.gradient-button {
   position: relative;
   display: inline-block;
@@ -69,12 +71,16 @@ a.gradient-button {
   font-size: 1.2rem;
   background: var(--gradient-main);
   text-transform: capitalize;
+  border: none;
+  cursor: pointer;
 }
 
+button.gradient-button::before,
 a.gradient-button::before {
   content: "";
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: linear-gradient(225deg, var(--blue), var(--purple), var(--red));
@@ -83,6 +89,7 @@ a.gradient-button::before {
   transition: opacity 0.6s ease;
 }
 
+button.gradient-button:hover::before,
 a.gradient-button:hover::before {
   opacity: 1;
 }
@@ -126,6 +133,133 @@ h3.section-subtitle {
   line-height: 110%;
   font-weight: 400;
   margin: var(--margin-medium) 0;
+}
+
+/* Popup */
+
+.popup,
+.thanks {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap);
+  position: fixed;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--black-secondary);
+  padding: var(--section-padding-desktop);
+  border-radius: var(--margin-small);
+  z-index: 10;
+
+  i{
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  h2.section-title {
+    font-size: 2rem;
+    text-align: center;
+    background: var(--gradient-main);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  p.thanksMessage{
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  #orderForm {
+    text-align: center;
+    .form-field {
+      position: relative;
+      margin-bottom: 2rem;
+      font-family: sans-serif;
+    }
+
+    .form-field input {
+      width: 100%;
+      padding: 1.2rem 1rem 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    .form-field label {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: var(--black-secondary);
+      font-size: 1rem;
+      pointer-events: none;
+      background: white;
+      transition: 0.3s ease;
+      padding: 0 0.25rem;
+    }
+
+    .form-field input:focus + label,
+    .form-field input:not(:placeholder-shown) + label {
+      top: 0.3rem;
+      left: 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    button {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      z-index: 0;
+      color: var(--white-text);
+      padding: var(--margin-small) var(--margin-medium);
+      border: none;
+      border-radius: var(--margin-small);
+      text-decoration: none;
+      font-size: 1.2rem;
+      background: var(--gradient-main);
+      text-transform: capitalize;
+      cursor: pointer;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        225deg,
+        var(--blue),
+        var(--purple),
+        var(--red)
+      );
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    button:hover::before {
+      opacity: 1;
+    }
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5;
 }
 
 /* Logo */
@@ -708,7 +842,6 @@ footer {
         .faq-item {
           .faq-btn {
             font-size: 1.2rem;
-            
           }
 
           .faq-content p {
@@ -720,10 +853,8 @@ footer {
   }
 }
 
-
 @media (min-width: 1024px) {
-
-    p.description {
+  p.description {
     font-size: 1.7rem;
   }
 
@@ -762,7 +893,6 @@ footer {
       }
     }
   }
-
 
   section {
     padding: var(--section-padding-desktop) var(--margin-small);
@@ -945,74 +1075,73 @@ footer {
   }
 
   #testimonials {
-  .container {
-    .content-box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      h3.section-title {
-        width: 66%;
-      }
-
-      .buttons {
+    .container {
+      .content-box {
         display: flex;
-        gap: var(--margin-small);
+        justify-content: space-between;
+        align-items: center;
 
-        button {
-          width: 48px;
-          height: 48px;
-          position: relative;
-          border-radius: 50%;
-          background: var(--black-primary);
-          border: none;
-          font-size: 1.3rem;
-          cursor: pointer;
-          transition: 0.3s;
+        h3.section-title {
+          width: 66%;
         }
 
-        button:hover {
-          background: var(--gradient-main);
-        }
+        .buttons {
+          display: flex;
+          gap: var(--margin-small);
 
-        button:hover i {
-          background: var(--black-primary);
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
+          button {
+            width: 48px;
+            height: 48px;
+            position: relative;
+            border-radius: 50%;
+            background: var(--black-primary);
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: 0.3s;
+          }
 
-        button::after {
-          content: "";
-          position: absolute;
-          top: -1px;
-          left: -1px;
-          right: -1px;
-          bottom: -1px;
-          z-index: -1;
-          background: var(--gradient-main);
-          border-radius: 50%;
+          button:hover {
+            background: var(--gradient-main);
+          }
+
+          button:hover i {
+            background: var(--black-primary);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+
+          button::after {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            z-index: -1;
+            background: var(--gradient-main);
+            border-radius: 50%;
+          }
         }
       }
-    }
 
-    .testimonials-container {
-      display: flex;
-      gap: var(--gap);
-      overflow: auto;
-      margin-top: var(--margin-medium);
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      border-radius: var(--margin-small);
+      .testimonials-container {
+        display: flex;
+        gap: var(--gap);
+        overflow: auto;
+        margin-top: var(--margin-medium);
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        border-radius: var(--margin-small);
 
-      .testimonial {
-        flex: 0 0 50%;
-        max-width: calc(50% - (var(--gap)/2));
+        .testimonial {
+          flex: 0 0 50%;
+          max-width: calc(50% - (var(--gap) / 2));
+        }
       }
-      
     }
   }
-}
 
   footer {
     .container {
@@ -1048,8 +1177,8 @@ footer {
               width: 100%;
             }
           }
+        }
       }
-    }
 
       .copyright-box {
         flex-direction: row;
