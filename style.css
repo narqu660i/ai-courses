@@ -21,6 +21,7 @@
     var(--red)
   );
 
+  --margin-mobile: 20px;
   --margin-small: 10px;
   --margin-medium: 25px;
   --margin-large: 35px;
@@ -66,7 +67,7 @@ a.gradient-button {
   border-radius: var(--margin-small);
   display: block;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 /* Texts styles */
@@ -76,15 +77,38 @@ p.description {
   font-weight: 300;
 }
 
-h3.section-title {
-  font-size: 2.8rem;
-  line-height: 120%;
+p.site-title{
+  font-size: 2rem;
+}
+
+p.title-small{
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+h1.hero-title {
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  span {
+    font-style: italic;
+    font-weight: 400;
+  }
+}
+
+h2.section-title {
+  font-size: 2.2rem;
+  line-height: 110%;
   font-weight: 400;
 }
 
-h4.box-title {
+h3.section-subtitle {
   font-size: 1.8rem;
+  line-height: 120%;
   font-weight: 400;
+  margin: var(--margin-medium) 0;
 }
 
 /* Logo */
@@ -94,11 +118,6 @@ h4.box-title {
   gap: var(--margin-small);
   align-items: center;
   cursor: pointer;
-
-  i,
-  h3.site-title {
-    font-size: 2rem;
-  }
 
   i {
     font-size: 1.5rem;
@@ -123,12 +142,12 @@ i {
 /* Header / Nagłówek */
 
 header {
-  margin: 0 var(--margin-medium);
+  margin: 0 var(--margin-mobile);
 }
 
 section {
-  margin: 0 var(--margin-medium);
-  padding: var(--section-padding) var(--margin-small);
+  margin: 0 var(--margin-mobile);
+  padding: var(--section-padding) 0;
 }
 
 .site-navbar {
@@ -140,7 +159,7 @@ section {
 
   .main-menu {
     position: absolute;
-    width: 60%;
+    width: 75%;
     top: 5.5rem;
     right: 0.5rem;
     padding: var(--margin-large);
@@ -149,7 +168,7 @@ section {
 
     display: flex;
     flex-direction: column;
-    gap: var(--margin-medium);
+    gap: var(--gap);
     align-items: center;
     overflow: hidden;
     opacity: 0;
@@ -170,7 +189,7 @@ section {
       z-index: 2;
 
       .menu-link {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: 300;
         text-transform: capitalize;
         text-decoration: none;
@@ -185,7 +204,7 @@ section {
         -webkit-background-clip: border-box;
         -webkit-text-fill-color: initial;
         color: var(--white-text);
-        padding: var(--margin-small) var(--margin-medium);
+        padding: var(--margin-small) var(--margin-mobile);
         border-radius: var(--margin-small);
         display: block;
       }
@@ -269,7 +288,7 @@ section {
   background-size: cover;
   background-position: center right;
 
-  padding: 20rem var(--margin-medium);
+  padding: 20vh var(--margin-medium);
   border-radius: var(--margin-small);
 
   position: relative;
@@ -278,23 +297,6 @@ section {
   .content-box {
     position: relative;
     z-index: 1;
-
-    h5.title-small {
-      font-size: 1.2rem;
-      font-weight: 300;
-    }
-
-    h1.hero-title {
-      font-size: 4.5rem;
-      line-height: 4rem;
-      font-weight: 600;
-      text-transform: capitalize;
-
-      span {
-        font-style: italic;
-        font-weight: 400;
-      }
-    }
 
     .buttons {
       margin-top: var(--margin-medium);
@@ -347,22 +349,16 @@ section {
       display: flex;
       flex-direction: column;
       gap: var(--margin-medium);
-
-      h2.title {
-        font-size: 3rem;
-        line-height: 3.2rem;
-        font-weight: 400;
-      }
     }
 
     .logo-section {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--margin-medium);
+      gap: var(--margin-mobile);
       margin-top: var(--margin-large);
 
       .logo-box {
-        width: calc(50% - (var(--margin-medium) / 2));
+        width: calc(50% - (var(--margin-mobile) / 2));
         background-color: var(--black-secondary);
         padding: var(--section-padding);
         border-radius: var(--margin-small);
@@ -382,7 +378,7 @@ section {
 #whyus {
   background-color: var(--black-secondary);
   margin: 0;
-  padding: var(--section-padding) var(--margin-large);
+  padding: var(--section-padding) var(--margin-mobile);
 
   .whyus-boxes {
     margin-top: var(--margin-large);
@@ -392,15 +388,11 @@ section {
 
     .whyus-box {
       background-color: var(--black-primary);
-      padding: var(--section-padding);
+      padding: var(--margin-large);
       border-radius: var(--margin-small);
 
       i {
         font-size: 2rem;
-      }
-
-      h4.box-title {
-        margin: var(--margin-medium) 0;
       }
     }
   }
@@ -429,12 +421,9 @@ section {
           font-size: 2.5rem;
         }
 
-        h4.box-title {
-          margin-top: var(--margin-medium);
-        }
-
         .gradient-button {
           margin-top: var(--margin-medium);
+          width: fit-content;
         }
       }
     }
@@ -503,8 +492,8 @@ section {
       border-radius: var(--margin-small);
 
       .testimonial {
-        flex: 0 0 50%;
-        max-width: calc(50% - (var(--gap) / 2));
+        flex: 0 0 100%;
+        max-width: 100%;
         background: var(--black-secondary);
         padding: var(--section-padding);
         border-radius: var(--margin-small);
@@ -525,6 +514,11 @@ section {
 
 #faq {
   .container {
+    .content-box{
+      display: flex;
+      flex-direction: column;
+      gap: var(--margin-medium);
+    }
     .faq-list {
       margin-top: var(--margin-large);
 
@@ -533,7 +527,7 @@ section {
           width: 100%;
           background: none;
           border: none;
-          font-size: 1.2rem;
+          font-size: 1rem;
           font-weight: 300;
           display: flex;
           justify-content: space-between;
@@ -546,6 +540,7 @@ section {
           span.question {
             color: var(--white-text);
             text-align: left;
+            width: 80%;
           }
 
           .faq-icon {
@@ -579,7 +574,7 @@ section {
         .faq-content p {
           margin-top: 10px;
           color: var(--white-text);
-          font-size: 1rem;
+          font-size: 0.9rem;
         }
 
         .faq-item.active .faq-content {
@@ -612,6 +607,8 @@ footer {
 
       .menu-footer {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         gap: var(--gap);
 
         .menu-element {
@@ -884,8 +881,7 @@ footer {
         flex-direction: row;
         justify-content: space-between;
         .links {
-          
-          .footer-link{
+          .footer-link {
             position: relative;
           }
 
