@@ -499,9 +499,9 @@ section {
           font-size: 2rem;
         }
 
-        svg{
+        svg {
           width: 48px;
-          fill: url(#gradient)
+          fill: url(#gradient);
         }
       }
     }
